@@ -9,6 +9,7 @@ const Lists = () => {
 
            <Navbar></Navbar>
            <Header type="List"></Header>
+           
         </div>
     );
 };
