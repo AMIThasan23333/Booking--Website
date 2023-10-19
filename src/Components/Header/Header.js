@@ -27,6 +27,23 @@ const Header = () => {
 
       })
 
+
+      const handleOptions = (name , operation) =>  {
+
+        setOptions((prev) => {
+          return {
+            ...prev,
+            [name] : operation ==="i" ? options[name] + 1 : options[name]- 1,
+
+          }
+        }) 
+
+
+
+      }
+
+
+
     return (
        <div className="header">
         <div className="headerContainer">
@@ -90,7 +107,51 @@ const Header = () => {
 
         <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="headerIcon"  />
-      <span className='headerSearchText'>{`${options.adult} adut ${options.children} children  . ${options.room}` }</span>
+      <span className='headerSearchText'>{`${options.adult} adut ${options.children} children  . ${options.room}  room ` }</span>
+
+
+<div className="options">
+
+  <div className="optionItem">
+    <div className="optionText">  Adult </div>
+    <div className="optionCounter">
+    <button className="optionCounterButton" onClick={() => handleOptions("adult", "d")}> -</button>
+    <div className="optionCounterNumber"> {options.adult} </div>
+    <button   className="optionCounterButton"
+    onClick={() => handleOptions("adult", "i")}
+    > +</button>
+</div>
+  </div>
+
+
+
+  <div className="optionItem">
+    <div className="optionText">  Children </div>
+    <div className="optionCounter">
+    <button className="optionCounterButton" onClick={() => handleOptions("children", "d")}> -</button>
+    <div className="optionCounterNumber"> {options.children} </div>
+    <button   className="optionCounterButton"
+    onClick={() => handleOptions("children", "i")}
+    > +</button>
+</div>
+  </div>
+
+  <div className="optionItem">
+    <div className="optionText"> Room </div>
+    <div className="optionCounter">
+    <button className="optionCounterButton" onClick={() => handleOptions("room", "d")}> -</button>
+    <div className="optionCounterNumber"> {options.room} </div>
+    <button   className="optionCounterButton"
+    onClick={() => handleOptions("room", "i")}
+    > +</button>
+</div>
+  </div>
+
+
+</div>
+
+
+
         </div>
 
         <div className="headerSearchItem">
