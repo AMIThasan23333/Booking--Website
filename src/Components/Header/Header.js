@@ -19,6 +19,7 @@ const Header = () => {
       ]);
 
       const [openDate , setOpenDate] = useState(false)
+      
 
       const [options  , setOptions] = useState({
         adult : 1,
@@ -107,7 +108,7 @@ const Header = () => {
 
         <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="headerIcon"  />
-      <span className='headerSearchText'>{`${options.adult} adut ${options.children} children  . ${options.room}  room ` }</span>
+      <span className='headerSearchText'>{`${options.adult} adult ${options.children} children  . ${options.room}  room ` }</span>
 
 
 <div className="options">
@@ -115,7 +116,9 @@ const Header = () => {
   <div className="optionItem">
     <div className="optionText">  Adult </div>
     <div className="optionCounter">
-    <button className="optionCounterButton" onClick={() => handleOptions("adult", "d")}> -</button>
+    <button 
+    disabled= {options.adult <= 1}
+    className="optionCounterButton" onClick={() => handleOptions("adult", "d")}> -</button>
     <div className="optionCounterNumber"> {options.adult} </div>
     <button   className="optionCounterButton"
     onClick={() => handleOptions("adult", "i")}
@@ -128,7 +131,9 @@ const Header = () => {
   <div className="optionItem">
     <div className="optionText">  Children </div>
     <div className="optionCounter">
-    <button className="optionCounterButton" onClick={() => handleOptions("children", "d")}> -</button>
+    <button 
+        disabled= {options.children <= 0}
+    className="optionCounterButton" onClick={() => handleOptions("children", "d")}> -</button>
     <div className="optionCounterNumber"> {options.children} </div>
     <button   className="optionCounterButton"
     onClick={() => handleOptions("children", "i")}
@@ -139,7 +144,9 @@ const Header = () => {
   <div className="optionItem">
     <div className="optionText"> Room </div>
     <div className="optionCounter">
-    <button className="optionCounterButton" onClick={() => handleOptions("room", "d")}> -</button>
+    <button 
+        disabled= {options.room <= 1}
+    className="optionCounterButton" onClick={() => handleOptions("room", "d")}> -</button>
     <div className="optionCounterNumber"> {options.room} </div>
     <button   className="optionCounterButton"
     onClick={() => handleOptions("room", "i")}

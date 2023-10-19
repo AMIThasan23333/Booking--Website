@@ -125,5 +125,10 @@
     height: 30px;
     border: 1px solid #0071c2;
     background-color: white;
+
+  }
+
+  .optionCounterButton:disabled {
+    cursor:  not-allowed;
     
   }
