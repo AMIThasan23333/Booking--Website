@@ -80,3 +80,16 @@
     cursor: pointer;
   }
   
+
+
+  .headerSearchInput {
+   border: none;
+   outline: none;
+  }
+
+
+  .date {
+    position: absolute;
+    top: 50px;
+    
+  }
