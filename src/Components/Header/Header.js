@@ -8,7 +8,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from 'date-fns';
 
-const Header = () => {
+const Header = ({type}) => {
 
     const [date, setDate] = useState([
         {
@@ -20,6 +20,7 @@ const Header = () => {
 
       const [openDate , setOpenDate] = useState(false)
       
+      const [openOptons , setOpenOptions] = useState(false)
 
       const [options  , setOptions] = useState({
         adult : 1,
@@ -47,7 +48,7 @@ const Header = () => {
 
     return (
        <div className="header">
-        <div className="headerContainer">
+        <div className={type === "List" ? "headerContainer listMode" : "headerContainer"}>
         <div className="headerList">
             <div className="headerListItem active">
                 <FontAwesomeIcon icon={faBed}/>
@@ -67,6 +68,8 @@ const Header = () => {
             </div>
         </div>
 
+{  type !== "List"  &&
+ <>
   <h1 className="headerTitle">A lifeTime of discount ? It's Genius</h1>
   <p className="headerDesc">Get Rewarded For your travels - Unlock instant savings of 10% or more with a free acoounts </p>
 
@@ -108,10 +111,14 @@ const Header = () => {
 
         <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="headerIcon"  />
-      <span className='headerSearchText'>{`${options.adult} adult ${options.children} children  . ${options.room}  room ` }</span>
+      <span onClick={() => setOpenOptions(!openOptons)} className='headerSearchText'>{`${options.adult} adult ${options.children} children  . ${options.room}  room ` }</span>
 
 
-<div className="options">
+             {
+
+      openOptons && 
+
+      <div className="options">
 
   <div className="optionItem">
     <div className="optionText">  Adult </div>
@@ -158,6 +165,9 @@ const Header = () => {
 </div>
 
 
+             }
+
+
 
         </div>
 
@@ -167,7 +177,8 @@ const Header = () => {
 
 
     </div>
-
+ </>
+}
         </div>
     
        </div>
