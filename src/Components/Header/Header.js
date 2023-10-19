@@ -18,6 +18,15 @@ const Header = () => {
         },
       ]);
 
+      const [openDate , setOpenDate] = useState(false)
+
+      const [options  , setOptions] = useState({
+        adult : 1,
+        children : 0,
+        room :1,
+
+      })
+
     return (
        <div className="header">
         <div className="headerContainer">
@@ -62,23 +71,26 @@ const Header = () => {
 
         <div className="headerSearchItem">
             <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-       <span className='headerSearchText'>{`${format(date[0].startDate, "MM/dd/yyyy")} to  ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+       <span onClick={() => setOpenDate(!openDate)}  className='headerSearchText'>{`${format(date[0].startDate, "MM/dd/yyyy")} to  ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
 
-       <DateRange
-                    editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
-                    moveRangeOnFirstSelection={false}
-                    ranges={date}
-                    className="date"
-                    minDate={new Date()}
-                  />
+       
+       {
+        openDate && <DateRange
+        editableDateInputs={true}
+        onChange={(item) => setDate([item.selection])}
+        moveRangeOnFirstSelection={false}
+        ranges={date}
+        className="date"
+        minDate={new Date()}
+      />
+       }
         </div>
 
 
 
         <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className="headerIcon"  />
-      <span className='headerSearchText'>2 adults 2 children 1 room</span>
+      <span className='headerSearchText'>{`${options.adult} adut ${options.children} children  . ${options.room}` }</span>
         </div>
 
         <div className="headerSearchItem">
