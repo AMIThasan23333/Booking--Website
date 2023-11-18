@@ -14,8 +14,9 @@ import Header from './../../Components/Header/Header';
 import MailList from './../../Components/MailList/MailList';
 import Footer from './../../Components/Footer/Footer';
 import useFetch from '../../Hooks/useFetch';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../Context/SearchContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -23,9 +24,10 @@ const Hotel = () => {
 
 
   const {dates,options} = useContext(SearchContext)
+  const {user} = useContext(AuthContext)
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  
+
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
@@ -38,7 +40,7 @@ const Hotel = () => {
   const location = useLocation()
 
   const id = location.pathname.split("/")[2]
-
+  const navigate = useNavigate()
 
   const { data, loading, error } = useFetch(`/hotels/${id}`);
 
@@ -80,6 +82,21 @@ const Hotel = () => {
 
     setSlideNumber(newSlideNumber)
   };
+
+
+   const handleClick = () => {
+
+    if(user) {
+
+    }else {
+      navigate('/login')
+    }
+
+
+   }
+
+
+
 
   return (
     <div>
