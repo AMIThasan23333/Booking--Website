@@ -12,6 +12,8 @@ import { SearchContext } from '../../Context/SearchContext';
 
 const Header = ({type}) => {
 
+
+  
     const [dates, setDates] = useState([
         {
           startDate: new Date(),
@@ -64,6 +66,7 @@ const Header = ({type}) => {
 
 
     return (
+      
        <div className="header">
         <div className={type === "List" ? "headerContainer listMode" : "headerContainer"}>
         <div className="headerList">
@@ -94,9 +97,7 @@ const Header = ({type}) => {
 
     
     <div className="headerSearch">
-
-    <div className="headerSearchItem">
-        
+    <div className="headerSearchItem">   
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
                   type="text"
@@ -137,7 +138,6 @@ const Header = ({type}) => {
       openOptons && 
 
       <div className="options">
-
   <div className="optionItem">
     <div className="optionText">  Adult </div>
     <div className="optionCounter">

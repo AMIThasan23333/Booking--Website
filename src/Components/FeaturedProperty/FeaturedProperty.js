@@ -9,13 +9,11 @@ const FeaturedProperty = () => {
     return (
        
         <div className="fp">
-   
-
-
       {
-        loading  ?  "loading" : <>
+
+        loading  ?  "loading" : 
         
-             
+        <>       
       {
         data.map((item ) => (
             <div className="fpItem">
@@ -32,13 +30,9 @@ const FeaturedProperty = () => {
                 <span>Excellent</span>
             </div>
             }
-
-
-
             </div>
         ))
       }
-        
         </>
       }
 
