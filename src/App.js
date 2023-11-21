@@ -3,6 +3,7 @@ import Home from "./Pages/Home/Home";
 import Lists from "./Pages/List/Lists";
 import Hotel from './Pages/Hotel/Hotel';
 import Login from "./Components/Login/Login";
+import Signup from "./Components/SignUp/SignUp";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/hotels" element={<Lists/>}></Route>
       <Route path="/hotels/:id" element={<Hotel/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
+      <Route path="/signup" element={<Signup/>}></Route>
     </Routes>
 
     
