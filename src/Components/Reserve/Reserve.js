@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { SearchContext } from "../../Context/SearchContext";
 
-const Reserve = ({ setOpenModal, hotelId }) => {
+const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
@@ -65,7 +65,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
           return res.data;
         })
       );
-      setOpenModal(false);
+      setOpen(false);
       navigate("/");
     } catch (err) {}
   };
@@ -75,7 +75,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
         <FontAwesomeIcon
           icon={faCircleXmark}
           className="rClose"
-          onClick={() => setOpenModal(false)}
+          onClick={() => setOpen(false)}
         />
         <span>Select your rooms:</span>
         {data.map((item) => (

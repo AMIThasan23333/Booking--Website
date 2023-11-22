@@ -93,9 +93,7 @@ const Header = ({type}) => {
   <h1 className="headerTitle">A lifeTime of discount ? It's Genius</h1>
   <p className="headerDesc">Get Rewarded For your travels - Unlock instant savings of 10% or more with a free acoounts </p>
 
-  <button className="headerBtn">Sign/Register</button>s
-
-    
+ 
     <div className="headerSearch">
     <div className="headerSearchItem">   
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -103,6 +101,7 @@ const Header = ({type}) => {
                   type="text"
                   placeholder="Where are you going"
                   className="headerSearchInput"
+
                    onChange={e => setDestination(e.target.value)}
                 />
               </div>

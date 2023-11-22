@@ -16,10 +16,16 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import MailList from "../../Components/MailList/MailList";
+import Reserve from '../../Components/Reserve/Reserve';
+import { useLocation } from 'react-router-dom';
 
 const Hotel = () => {
+  
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const photos = [
     {
@@ -45,7 +51,13 @@ const Hotel = () => {
   const handleOpen = (i) => {
     setSlideNumber(i);
     setOpen(true);
+   
+    
   };
+
+  const handleModal = () => {
+    setOpenModal(true)
+  }
 
   const handleMove = (direction) => {
     
@@ -87,7 +99,7 @@ const Hotel = () => {
           </div>
         )}
         <div className="hotelWrapper">
-          <button className="bookNow">Reserve or Book Now!</button>
+          <button onClick={handleModal} className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">Tower Street Apartments</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
@@ -137,12 +149,15 @@ const Hotel = () => {
               <h2>
                 <b>$945</b> (9 nights)
               </h2>
-              <button>Reserve or Book Now!</button>
+              <button onClick={handleModal}>Reserve or Book Now!</button>
             </div>
           </div>
         </div>
         <MailList />
         <Footer />
+           
+    {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+       
       </div>
     </div>
   );

@@ -2,10 +2,11 @@
 
 .featured {
 
-    width: 100%;
-    max-width: 1024px;
-    display: flex;
+   width:  800px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
     z-index: 1;
 }
@@ -15,7 +16,7 @@
     color: white;
     border-radius: 10px;
     overflow: hidden;
-    height: 250px;
+
 
 }
 
@@ -28,7 +29,7 @@
 .featuredTitles {
     position: absolute;
     display: flex;
-    bottom: 40px;
+    bottom: 80px;
     left: 20px;
 
 

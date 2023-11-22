@@ -6,10 +6,12 @@ const Featured = () => {
     
     
 
-    const  {data, loading, error, refetch}  = useFetch("/hotels/countByCity?cities=Berlin,Madrid,London")
+    const  {data, loading, error, refetch}  = useFetch("/hotels/countByCity?cities=Miami,Munich,Berlin,Madrid,London,  Kuala Lumpur," )
 
 
-     console.log(data)
+    console.log(data)
+
+   
 
 
 
@@ -18,35 +20,21 @@ const Featured = () => {
   <div className="featured">
 
   {
-    loading ? ("loading pleas wait")  : (
+    loading ? ("loading please wait")  : (
 
         <>
-
-          <div className="featuredItem">
-        <img src="https://th.bing.com/th/id/OIP.oPY7YsfmvUFubtYkdoNOHgHaEK?pid=ImgDet&rs=1" className='featuredimg' alt="" srcset="" />
-        <div className="featuredTitles">
-            <h1>Berlin {data[0]} properties</h1>
-           
-        </div>
-    </div>
-
-    <div className="featuredItem">
-        <img src="https://th.bing.com/th/id/OIP.oPY7YsfmvUFubtYkdoNOHgHaEK?pid=ImgDet&rs=1" alt=""  className='featuredimg' srcset="" />
-        <div className="featuredTitles">
-            <h1>Madrid {data[1]} properties </h1>
-        
-        </div>
-    </div>
-
-    <div className="featuredItem">
-        <img src="https://th.bing.com/th/id/OIP.oPY7YsfmvUFubtYkdoNOHgHaEK?pid=ImgDet&rs=1" alt="" className='featuredimg' srcset="" />
-        <div className="featuredTitles">
-            <h1>London {data[2]} properties</h1>
-          
-        </div>
-    </div>
-
-        
+          {data.map((cityData, index) => (
+            <div key={index} className="featuredItem">
+              <img
+                src="https://th.bing.com/th/id/OIP.oPY7YsfmvUFubtYkdoNOHgHaEK?pid=ImgDet&rs=1"
+                className="featuredimg"
+                alt=""
+              />
+              <div className="featuredTitles">
+              <h1>{cityData.city} {cityData.count} properties</h1>
+              </div>
+            </div>
+          ))}
         </>
 
     )
